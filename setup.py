@@ -9,8 +9,15 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='pcassandra',
-    version='0.0.1',
-    packages=['pcassandra'],
+    version='0.0.2',
+    packages=[
+        'pcassandra',
+        'pcassandra.management',
+        'pcassandra.management.commands',
+        'pcassandra.dj18',
+        'pcassandra',
+        'pcassandra',
+    ],
     include_package_data=True,
     license='BSD License',
     description='Utilities to use Cassandra with Django',

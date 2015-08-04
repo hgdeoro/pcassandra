@@ -1,0 +1,7 @@
+/.idea
+*.pyc
+*~
+*.bak
+/virtualenv
+/db.sqlite3
+/settings_local.py

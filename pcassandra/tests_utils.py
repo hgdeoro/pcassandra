@@ -1,3 +1,8 @@
+"""
+Utilities to facilitate the implementation of unittest, for
+pcassandra, and for pcassandra users too.
+"""
+
 import uuid
 
 from cassandra.cqlengine import management
@@ -10,7 +15,7 @@ class PCassandraTestUtilsMixin:
 
     def _full_setup(self_or_cls=None):
         """
-        Setup connection, create keyspace and models
+        Setup connection, create keyspace and models.
 
         Use: call this in the 'setUpClass()' method of the base class of your unittests:
 
@@ -36,7 +41,7 @@ class PCassandraTestUtilsMixin:
     def _create_user(self, username=None, auto_first_last_email=False, **kwargs):
         """
         Creates an user instance and inserts it in the database.
-        The received 'kwargs' are passed to Model.create()
+        The received 'kwargs' are passed to YourConfiguredUserModel.create()
         """
         ModelClass = utils.get_cassandra_user_model()
 

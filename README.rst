@@ -1,6 +1,22 @@
 PCassandra - Pico Cassandra utilities for Django
 ================================================
 
+Currently this helps you with:
+
+- has an User implementation and authentication backend (with limitations!)
+- setup cqlengine from your settings
+- management commands to create keyspace and sync models
+
+Right now, this is realy coupled with Django 1.8 internals.
+
+TODO
+----
+
+- create a Django test project
+- move stuff to dj18 package
+- document the ugliest parts
+- implement user's permissions, or document that that is't implemented
+
 
 How to execute unittests
 ------------------------

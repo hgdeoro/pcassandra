@@ -205,7 +205,8 @@ class DjangoUserProxy(models.Model):
     # ----- Other hacks
 
     def save(self, *args, **kwargs):
-        """The Django's authenticate() updates the 'last_login' field as part
+        """
+        The Django's authenticate() updates the 'last_login' field as part
         of the login process. There is no way to avoid this, so, we check the
         arguments. If the arguments are the exact arguments used by authenticate(),
         we ignore the call to save().
@@ -216,6 +217,6 @@ class DjangoUserProxy(models.Model):
         if (update_fields == ['last_login'] and
                 len(kwargs) == 1 and
                 len(args) == 0):
-            logger.warning("Ignoring save() because is just trying to update 'last_login'")
+            logger.info("Ignoring save() because is just trying to update 'last_login'")
         else:
             return super().save(*args, **kwargs)

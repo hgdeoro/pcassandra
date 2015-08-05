@@ -111,7 +111,7 @@ class DjangoUserProxy(models.Model):
         return self._cassandra_user.get_short_name()
 
     def email_user(self, subject, message, from_email=None, **kwargs):
-        return self._cassandra_user.email_user(subject, message, from_email=None, **kwargs)
+        return self._cassandra_user.email_user(subject, message, from_email, **kwargs)
 
     def __str__(self):
         return self.get_username()

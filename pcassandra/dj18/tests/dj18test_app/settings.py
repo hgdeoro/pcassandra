@@ -20,8 +20,13 @@ CASSANDRA_CONNECTION = {
     'KEYSPACE': 'dj18test_app' + os.environ.get('TEST_KEYSPACE_SUFFIX', ''),
     'HOSTS': ['127.0.0.1'],
     'KEYSPACE_REPLICATION': """
-        { 'class' : 'SimpleStrategy', 'replication_factor' : 1 }
-    """,
+        {{
+         'class' : 'SimpleStrategy',
+         'replication_factor' : {replication_factor}
+        }}
+    """.format(
+        replication_factor=os.environ.get('TEST_KEYSPACE_REPL_FACTOR', '1')
+    ),
     'CLUSTER_KWARGS': {
         'protocol_version': 3
     }

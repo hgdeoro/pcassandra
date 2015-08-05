@@ -43,6 +43,8 @@ And you'll need to override some defaults values with:
 - Auth: add unittest of user model / auth backend
 - Auth: implement user's permissions
 - Auth: create management command to change user passwords
+- Auth: update last login - DjangoUserProxy.save()
+- Auth: update password hash - EmulatedAbstractBaseUser.check_password()
 - Session: add unittest of session model / backend
 - Session: implement 'clear_expired()'
 - Both: document the ugliest parts, and create unittests for them

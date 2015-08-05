@@ -12,10 +12,11 @@ setup(
     version='0.0.4.dev',
     packages=[
         'pcassandra',
+        'pcassandra.dj18',
+        'pcassandra.dj18.auth',
+        'pcassandra.dj18.session',
         'pcassandra.management',
         'pcassandra.management.commands',
-        'pcassandra.dj18',
-        'pcassandra.dj18.session',
     ],
     include_package_data=True,
     license='BSD License',

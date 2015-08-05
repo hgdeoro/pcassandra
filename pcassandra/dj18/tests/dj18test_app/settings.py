@@ -43,6 +43,8 @@ PCASSANDRA_AUTH_USER_MODEL = 'pcassandra.dj18.models.CassandraUser'
 
 WSGI_APPLICATION = 'dj18test_app.wsgi.application_development'
 
+SESSION_ENGINE = 'pcassandra.dj18.session.backend'
+
 #
 # Django settings
 #

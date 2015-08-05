@@ -34,7 +34,7 @@ CASSANDRA_CONNECTION = {
 
 AUTHENTICATION_BACKENDS = (
     # 'django.contrib.auth.backends.ModelBackend',
-    'pcassandra.dj18.auth.auth_backend.ModelBackend',
+    'pcassandra.dj18.auth.backend.ModelBackend',
 )
 
 AUTH_USER_MODEL = 'pcassandra.DjangoUserProxy'

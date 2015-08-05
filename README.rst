@@ -1,24 +1,37 @@
 PCassandra - Pico Cassandra utilities for Django
 ================================================
 
-Currently this helps you with:
+- store User on Cassadra (custom auth backend) - see KNOWN ISSUES
+- store Session on Cassandra (custom session store) - see KNOWN ISSUES
+- configure cqlengine connection parameters from your settings
+- management commands to create keyspace and sync models (auth, session)
+- management commands to create user and superusers
+- a WSGI middleware to setup cqlengine on development server
 
-- has an User implementation and authentication backend (with limitations!)
-- setup cqlengine from your settings
-- management commands to create keyspace and sync models
-- a WSGI middleware to setup connection on development server
+Since Django's auth & session backends are by design heavyly coupled with models,
+the backends included here are basically and copy & paste of Django, adapted for
+the API of cqlengine models.
 
-Right now, this is realy coupled with Django 1.8 internals.
+For Django==1.8.3 & cassandra-driver==2.6.0
 
 TODO
 ----
 
-- create a Django test project
+- create management command to change passwords
 - move stuff to dj18 package
 - document the ugliest parts, and create unittests for them
-- implement user's permissions, or document that that is't implemented
+- implement user's permissions
+- add unittest of session model / backend
+- add unittest of user model / auth backend
 - generate docs
+- investigate if there is some way to execute Django's unittests against this implementations
 
+KNOWN ISSUES
+------------
+
+- User model DOES NOT implements permissions api. Superusers have all the permissions,
+  and non-superusers have no permissions.
+- Session model and session backend is not tested at all
 
 
 LICENSE

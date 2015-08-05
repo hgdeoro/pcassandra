@@ -1,5 +1,6 @@
-PCassandra - Pico Cassandra utilities for Django
-================================================
+# PCassandra - Pico Cassandra utilities for Django
+
+... because nano is too much, but femto is not enough :-P
 
 - store User on Cassadra (custom auth backend) - see KNOWN ISSUES
 - store Session on Cassandra (custom session store) - see KNOWN ISSUES
@@ -12,36 +13,32 @@ Since Django's auth & session backends are by design heavyly coupled with models
 the backends included here are basically and copy & paste of Django, adapted for
 the API of cqlengine models.
 
-Developed and tested with:
+### Developed and tested with
 
- * Python 3.4
- * Django 1.8.3
- * cassandra-driver 2.6.0
- * Cassandra 2.1.8
+* Python 3.4
+* Django 1.8.3
+* cassandra-driver 2.6.0
+* Cassandra 2.1.8
 
-Install
--------
+## Install
 
     $ pip install pcassandra
 
-
-Settings
---------
+## Settings
 
 PCassandra adds 2 new settings variables:
 
- * CASSANDRA_CONNECTION (see 'connection.py')
- * PCASSANDRA_AUTH_USER_MODEL = 'pcassandra.dj18.auth.models.CassandraUser'
+* `CASSANDRA_CONNECTION`: see *connection.py*
+* `PCASSANDRA_AUTH_USER_MODEL = 'pcassandra.dj18.auth.models.CassandraUser'`
 
 And you'll need to override some defaults values with:
 
- * AUTHENTICATION_BACKENDS = ['pcassandra.dj18.auth.backend.ModelBackend']
- * AUTH_USER_MODEL = 'pcassandra.DjangoUserProxy'
- * SESSION_ENGINE = 'pcassandra.dj18.session.backend'
- * WSGI_APPLICATION (see 'wsgi.py' for recommended setup)
+* `AUTHENTICATION_BACKENDS = `['pcassandra.dj18.auth.backend.ModelBackend']`
+* `AUTH_USER_MODEL = 'pcassandra.DjangoUserProxy'`
+* `SESSION_ENGINE = 'pcassandra.dj18.session.backend'`
+* `WSGI_APPLICATION`: see *wsgi.py* for recommended setup
 
-TODO
-----
+## TODO
 
 - Auth: add unittest of user model / auth backend
 - Auth: implement user's permissions
@@ -52,16 +49,14 @@ TODO
 - generate docs
 - investigate if there is some way to execute Django's unittests against this implementations
 
-KNOWN ISSUES
-------------
+## KNOWN ISSUES
 
 - User model DOES NOT implements permissions api. Superusers have all the permissions,
   and non-superusers have no permissions.
 - Session model and session backend is not tested at all
 
 
-LICENSE
--------
+# LICENSE
 
 Copyright (c) Django Software Foundation and individual contributors.
 All rights reserved.

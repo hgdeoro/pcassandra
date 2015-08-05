@@ -9,7 +9,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='pcassandra',
-    version='0.0.3',
+    version='0.0.4.dev',
     packages=[
         'pcassandra',
         'pcassandra.management',
@@ -25,8 +25,9 @@ setup(
     author='Horacio G. de Oro',
     author_email='hgdeoro@gmail.com',
     classifiers=[
+        'Development Status :: 3 - Alpha',
         'Environment :: Web Environment',
-        'Framework :: Django',
+        'Framework :: Django :: 1.8',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
         'Operating System :: OS Independent',
@@ -35,5 +36,6 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
+        'Topic :: Internet :: WWW/HTTP :: WSGI :: Middleware',
     ],
 )

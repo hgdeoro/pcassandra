@@ -12,17 +12,43 @@ Since Django's auth & session backends are by design heavyly coupled with models
 the backends included here are basically and copy & paste of Django, adapted for
 the API of cqlengine models.
 
-For Django==1.8.3 & cassandra-driver==2.6.0
+Developed and tested with:
+
+ * Python 3.4
+ * Django 1.8.3
+ * cassandra-driver 2.6.0
+ * Cassandra 2.1.8
+
+Install
+-------
+
+    $ pip install pcassandra
+
+
+Settings
+--------
+
+PCassandra adds 2 new settings variables:
+
+ * CASSANDRA_CONNECTION (see 'connection.py')
+ * PCASSANDRA_AUTH_USER_MODEL = 'pcassandra.dj18.auth.models.CassandraUser'
+
+And you'll need to override some defaults values with:
+
+ * AUTHENTICATION_BACKENDS = ['pcassandra.dj18.auth.backend.ModelBackend']
+ * AUTH_USER_MODEL = 'pcassandra.DjangoUserProxy'
+ * SESSION_ENGINE = 'pcassandra.dj18.session.backend'
+ * WSGI_APPLICATION (see 'wsgi.py' for recommended setup)
 
 TODO
 ----
 
-- create management command to change passwords
-- move stuff to dj18 package
-- document the ugliest parts, and create unittests for them
-- implement user's permissions
-- add unittest of session model / backend
-- add unittest of user model / auth backend
+- Auth: add unittest of user model / auth backend
+- Auth: implement user's permissions
+- Auth: create management command to change user passwords
+- Session: add unittest of session model / backend
+- Session: implement 'clear_expired()'
+- Both: document the ugliest parts, and create unittests for them
 - generate docs
 - investigate if there is some way to execute Django's unittests against this implementations
 

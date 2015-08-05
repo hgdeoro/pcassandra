@@ -1,5 +1,22 @@
 """
-Setup the connections to Cassandra using the values on Django settings
+Setup the connections to Cassandra using the values on Django settings.
+
+Exampmle settings:
+
+    CASSANDRA_CONNECTION = {
+        'KEYSPACE': 'my_cassandra_keyspace',
+        'HOSTS': ['127.0.0.1'],
+        'KEYSPACE_REPLICATION': "{'class' : 'SimpleStrategy', 'replication_factor' : 1}",
+        'CLUSTER_KWARGS': {
+            'protocol_version': 3
+        }
+    }
+
+* KEYSPACE: the name of the Cassandra keyspace
+* HOSTS: list of initial hosts to connect to
+* KEYSPACE_REPLICATION: parameters to use when creating the keyspace
+* CLUSTER_KWARGS: parameters to pass to cassandra.cluster.Cluster()
+
 """
 
 import logging

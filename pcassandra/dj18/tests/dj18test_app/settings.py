@@ -34,12 +34,12 @@ CASSANDRA_CONNECTION = {
 
 AUTHENTICATION_BACKENDS = (
     # 'django.contrib.auth.backends.ModelBackend',
-    'pcassandra.dj18.auth_backend.ModelBackend',
+    'pcassandra.dj18.auth.auth_backend.ModelBackend',
 )
 
 AUTH_USER_MODEL = 'pcassandra.DjangoUserProxy'
 
-PCASSANDRA_AUTH_USER_MODEL = 'pcassandra.dj18.models.CassandraUser'
+PCASSANDRA_AUTH_USER_MODEL = 'pcassandra.dj18.auth.models.CassandraUser'
 
 WSGI_APPLICATION = 'dj18test_app.wsgi.application_development'
 

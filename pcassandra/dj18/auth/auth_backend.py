@@ -2,7 +2,7 @@ import logging
 
 from django import VERSION
 
-from pcassandra.dj18.models import DjangoUserProxy
+from pcassandra.dj18.auth.models import DjangoUserProxy
 from pcassandra import utils
 
 assert VERSION[0] == 1 and VERSION[1] == 8, "Django 1.8 required"

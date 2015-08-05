@@ -3,6 +3,7 @@ from cassandra.cqlengine import management
 
 from pcassandra import connection
 from pcassandra import utils
+from pcassandra.dj18.session import models as session_models
 
 
 class Command(BaseCommand):
@@ -14,3 +15,6 @@ class Command(BaseCommand):
         ConfiguredCassandraUserModelClass = utils.get_cassandra_user_model()
         self.stdout.write('Sync-ing "{}"'.format(ConfiguredCassandraUserModelClass))
         management.sync_table(ConfiguredCassandraUserModelClass)
+
+        self.stdout.write('Sync-ing "{}"'.format(session_models.CassandraSession))
+        management.sync_table(session_models.CassandraSession)

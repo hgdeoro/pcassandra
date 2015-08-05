@@ -1,6 +1,6 @@
 from django import VERSION
 
-from pcassandra.dj18.auth.models import DjangoUserProxy
+from pcassandra.dj18.auth.django_models import DjangoUserProxy
 
 #
 # We need the models be accesibles from this module because the

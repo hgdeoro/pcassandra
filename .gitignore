@@ -7,3 +7,4 @@
 /settings_local.py
 /dist
 /pcassandra.egg-info
+/pcassandra/dj18/tests/db.sqlite3*

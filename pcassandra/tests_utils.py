@@ -11,32 +11,40 @@ from pcassandra import connection
 from pcassandra import utils
 
 
+def setup_connection_and_create_keyspace():
+    """
+    Setup connection and creates keyspace.
+    """
+    # FIXME: self_or_cls=None... So hacky!
+    connection.setup_connection_if_unset(set_default_keyspace=False)
+    connection.create_keyspace()
+    connection.set_session_default_keyspace()
+
+
+def setup():
+    """
+    Setup connection, create keyspace and models.
+
+    Use: call this in the 'setUpClass()' method of the base class of your unittests:
+
+        class BaseTest(unittest.TestCase, tests_utils.PCassandraTestUtilsMixin):
+
+            cassandra_connection_done = False
+
+            @classmethod
+            def setUpClass(cls):
+                unittest.TestCase.setUpClass()
+                if not cls.cassandra_connection_done:
+                    tests_utils.PCassandraTestUtilsMixin._full_setup()
+                    cls.cassandra_connection_done = True
+    """
+    setup_connection_and_create_keyspace()
+
+    ModelClass = utils.get_cassandra_user_model()
+    management.sync_table(ModelClass)
+
+
 class PCassandraTestUtilsMixin:
-
-    def _full_setup(self_or_cls=None):
-        """
-        Setup connection, create keyspace and models.
-
-        Use: call this in the 'setUpClass()' method of the base class of your unittests:
-
-            class BaseTest(unittest.TestCase, tests_utils.PCassandraTestUtilsMixin):
-
-                cassandra_connection_done = False
-
-                @classmethod
-                def setUpClass(cls):
-                    unittest.TestCase.setUpClass()
-                    if not cls.cassandra_connection_done:
-                        tests_utils.PCassandraTestUtilsMixin._full_setup()
-                        cls.cassandra_connection_done = True
-        """
-        # FIXME: self_or_cls=None... So hacky!
-        ModelClass = utils.get_cassandra_user_model()
-
-        connection.setup_connection_if_unset(set_default_keyspace=False)
-        connection.create_keyspace()
-        connection.set_session_default_keyspace()
-        management.sync_table(ModelClass)
 
     def _create_user(self, username=None, auto_first_last_email=False, **kwargs):
         """

@@ -16,7 +16,7 @@ class PCassandraBaseTest(test.TestCase, tests_utils.PCassandraTestUtilsMixin):
     @override_settings(PCASSANDRA_AUTH_USER_MODEL=PCASSANDRA_AUTH_USER_MODEL)
     def setUpClass(cls):
         test.TestCase.setUpClass()
-        cls._full_setup()
+        tests_utils.setup()
 
 
 class TestCassandraUserCreation(PCassandraBaseTest):
